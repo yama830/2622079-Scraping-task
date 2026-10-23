@@ -13,9 +13,12 @@ html_soup = BeautifulSoup(res.text,'html.parser')
 html_soup = BeautifulSoup(res.content,'html.parser')
 print(f"html_soupの型:{type(html_soup)}")
 
-a_all = html_soup.find_all("a")
-
-
-
 print(html_soup.find_all(class_='url'))
 
+for url in sitemap:
+      key = html_soup.find_all(class_='url').text
+      value = html_soup.find_all('title').text
+
+      sitemap[key] = int(value)
+
+print(sitemap)
